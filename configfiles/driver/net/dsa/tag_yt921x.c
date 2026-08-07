@@ -61,13 +61,13 @@ yt921x_tag_xmit(struct sk_buff *skb, struct net_device *netdev)
 	 * 【终极修复 1：强制线性化】
 	 * 解决 rk_gmac (stmmac) 驱动在 6.6 内核下处理多 frags 描述符链时
 	 * DMA 引擎挂死的已知 Bug。将所有碎片合并到线性数据区。
+	 */
 	if (skb_is_nonlinear(skb)) {
 		if (unlikely(skb_linearize(skb))) {
 			kfree_skb(skb);
 			return NULL;
 		}
 	}
-	 */
 
 	/* 防御性检查，确保 headroom 足够 */
 	if (unlikely(skb_cow_head(skb, YT921X_TAG_LEN) < 0)) {
