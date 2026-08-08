@@ -1098,7 +1098,7 @@
 
 /* ===== Switch ===== */
 &mdio0 {
-	switch@1c {
+	switch@1d {
 		compatible = "motorcomm,yt9215";
 		reg = <29>;
 		status = "okay";
