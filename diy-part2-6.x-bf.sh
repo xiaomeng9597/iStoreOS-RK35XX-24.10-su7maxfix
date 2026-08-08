@@ -66,10 +66,6 @@ cp -f $GITHUB_WORKSPACE/configfiles/02_network target/linux/rockchip/armv8/base-
 
 cp -a $GITHUB_WORKSPACE/configfiles/driver/* target/linux/generic/files
 cp -f target/linux/generic/files/net/dsa/tag_yt921x.c.txt target/linux/generic/files/net/dsa/tag_yt921x.c
-
-
- target/linux/rockchip/dts/rk3588/rk3588-g98-nas.dts
-/storage/emulated/0/ck/iStoreOS-RK35XX-24.10-su7maxfix/
 ls target/linux/generic/files
 
 
