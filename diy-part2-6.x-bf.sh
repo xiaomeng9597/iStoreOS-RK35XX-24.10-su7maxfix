@@ -66,6 +66,8 @@ cp -f $GITHUB_WORKSPACE/configfiles/02_network target/linux/rockchip/armv8/base-
 
 cp -a $GITHUB_WORKSPACE/configfiles/driver/* target/linux/generic/files
 cp -f target/linux/generic/files/net/dsa/tag_yt921x.c.txt target/linux/generic/files/net/dsa/tag_yt921x.c
+sha256sum target/linux/generic/files/net/dsa/tag_yt921x.c.txt 
+sha256sum target/linux/generic/files/net/dsa/tag_yt921x.c
 ls target/linux/generic/files
 
 
