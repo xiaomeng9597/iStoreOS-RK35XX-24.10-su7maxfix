@@ -27,7 +27,6 @@ if [ "$board" = "bdy,g98-nas" ]; then
         tc qdisc add dev $IFACE root handle 1: htb default 10
         tc class add dev $IFACE parent 1: classid 1:1 htb rate $CEIL ceil $CEIL
         tc class add dev $IFACE parent 1:1 classid 1:10 htb rate $RATE ceil $CEIL burst $BURST prio 0
-        tc qdisc add dev $IFACE parent 1:10 handle 10: pfifo limit 100
     done
     echo "配置完成！"
 fi

@@ -16,12 +16,13 @@ start() {
 # cat <<EOF > /etc/config/g98_init_lock
 # true
 # EOF
-                # rm -f /etc/config/network
-                # /etc/init.d/network restart
                 echo "true"
             else
                 echo "false"
             fi
+
+            sleep 60
+            /bin/g98_limit_dsa.sh
 
             ;;
         *)

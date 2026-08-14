@@ -76,15 +76,14 @@ cp -f $GITHUB_WORKSPACE/configfiles/driver/999-01-net-dsa-add-yt921x-header-defs
 
 cp -f $GITHUB_WORKSPACE/configfiles/g98_limit_dsa.sh package/base-files/files/bin/g98_limit_dsa.sh
 chmod 755 package/base-files/files/bin/g98_limit_dsa.sh
-cp -f $GITHUB_WORKSPACE/configfiles/rc.local package/base-files/files/etc/rc.local
 
 
 # cp -f $GITHUB_WORKSPACE/configfiles/netdevices.mk package/kernel/linux/modules/netdevices.mk
 
 
 # 启动时执行初始化脚本
-# cp -f $GITHUB_WORKSPACE/configfiles/g98_init package/base-files/files/etc/init.d/g98_init
-# chmod 755 package/base-files/files/etc/init.d/g98_init
+cp -f $GITHUB_WORKSPACE/configfiles/g98_init package/base-files/files/etc/init.d/g98_init
+chmod 755 package/base-files/files/etc/init.d/g98_init
 
 
 # cp -f $GITHUB_WORKSPACE/configfiles/stmmac_main.c.txt stmmac_main.c.txt
