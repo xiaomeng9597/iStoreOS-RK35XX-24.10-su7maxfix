@@ -899,6 +899,7 @@
 	//snps,reset-gpio = <&gpio3 RK_PD0 GPIO_ACTIVE_LOW>;
 	//snps,reset-active-low;
 	//snps,reset-delays-us = <0 20000 100000>;
+	snps,en-hdr-sel = <0>;
 	pinctrl-names = "default";
 	status = "okay";
 
@@ -921,6 +922,7 @@
 	//snps,reset-gpio = <&gpio4 RK_PB3 GPIO_ACTIVE_LOW>;
 	//snps,reset-active-low;
 	//snps,reset-delays-us = <0 20000 100000>;
+	snps,en-hdr-sel = <0>;
 	pinctrl-names = "default";
 	status = "okay";
 

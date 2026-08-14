@@ -3420,7 +3420,7 @@ static int stmmac_hw_setup(struct net_device *dev, bool ptp_register)
 	}
 
 	/* Enable Split Header */
-	sph_en = (priv->hw->rx_csum > 0) && priv->sph;
+	sph_en = false;
 	for (chan = 0; chan < rx_cnt; chan++)
 		stmmac_enable_sph(priv, priv->ioaddr, sph_en, chan);
 
@@ -5662,8 +5662,8 @@ static int stmmac_napi_poll_rxtx(struct napi_struct *napi, int budget)
 static void stmmac_tx_timeout(struct net_device *dev, unsigned int txqueue)
 {
 	struct stmmac_priv *priv = netdev_priv(dev);
-	netdev_err(dev, "transmit queue %u timed out, trigger tx err recovery\n", txqueue);
-	stmmac_tx_err(priv, txqueue);
+
+	stmmac_global_err(priv);
 }
 
 /**
@@ -6809,7 +6809,7 @@ int stmmac_xdp_open(struct net_device *dev)
 	}
 
 	/* Adjust Split header */
-	sph_en = (priv->hw->rx_csum > 0) && priv->sph;
+	sph_en = false;
 
 	/* DMA RX Channel Configuration */
 	for (chan = 0; chan < rx_cnt; chan++) {
@@ -7500,7 +7500,7 @@ int stmmac_dvr_probe(struct device *device,
 	    !(priv->plat->flags & STMMAC_FLAG_SPH_DISABLE)) {
 		ndev->hw_features |= NETIF_F_GRO;
 		priv->sph_cap = true;
-		priv->sph = priv->sph_cap;
+		priv->sph = 0;
 		dev_info(priv->device, "SPH feature enabled\n");
 	}
 
