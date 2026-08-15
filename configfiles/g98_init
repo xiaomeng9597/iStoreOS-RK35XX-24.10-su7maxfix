@@ -23,6 +23,8 @@ start() {
 
             sleep 60
             /bin/g98_limit_dsa.sh
+            ethtool -G eth0 rx 1024 tx 1024
+            ethtool -G eth1 rx 1024 tx 1024
 
             ;;
         *)
