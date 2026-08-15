@@ -1560,15 +1560,6 @@ yt921x_dsa_port_setup_tc(struct dsa_switch *ds, int port,
 
 	switch (type) {
 	case TC_SETUP_QDISC_MQPRIO:
-		if (type == TC_SETUP_QDISC_MQPRIO) {
-			struct device *dev = ds->dev;
-			dev_info(dev, "Rejecting MQPRIO (multi-queue) setup to prevent hardware hang.\n");
-			return -EOPNOTSUPP;
-		}
-
-		if (ds->num_tx_queues == 1)
-			return -EOPNOTSUPP;
-
 		if (!yt921x_mqprio_supported_port(ds, port))
 			return -EOPNOTSUPP;
 

@@ -490,7 +490,7 @@ static int yt921x_mdio_probe(struct mdio_device *mdiodev)
 	ds->ageing_time_max = U16_MAX * 5000;
 	ds->num_lag_ids = YT921X_LAG_NUM;
 	ds->num_ports = YT921X_PORT_NUM;
-	ds->num_tx_queues = 1;
+	ds->num_tx_queues = YT921X_PRIO_NUM;
 
 	mdiodev_set_drvdata(mdiodev, priv);
 
