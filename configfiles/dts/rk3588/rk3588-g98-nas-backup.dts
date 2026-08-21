@@ -42,10 +42,10 @@
 		keyup-threshold-microvolt = <1800000>;
 		poll-interval = <100>;
 
-		vol-up-key {
-			label = "volume up";
-			linux,code = <KEY_VOLUMEUP>;
-			press-threshold-microvolt = <17000>;
+		button-recovery {
+			label = "Recovery";
+			linux,code = <KEY_VENDOR>;
+			press-threshold-microvolt = <1800>;
 		};
 	};
 
@@ -713,7 +713,7 @@
 		pcie_eth2: pcie-eth@20,0 {
 			compatible = "pci10ec,8125";
 			local-mac-address = [4e 40 ca c9 65 d2];
-			reg = <0x000000 0 0 0 0>;
+			reg = <0x00210000 0 0 0 0>;
 			/* 2.5G网口led灯，如果要闪烁设置为：<0x002b 0x002b 0x0000 0x0000>;
 			 * 该网口灯无法单独控制，只能一起闪，一起灭，一起亮！！！ 
 			*/ 
@@ -745,7 +745,7 @@
 		pcie_eth3: pcie-eth@30,0 {
 			compatible = "pci10ec,8125";
 			local-mac-address = [4e 40 ca c9 65 d1];
-			reg = <0x000000 0 0 0 0>;
+			reg = <0x00310000 0 0 0 0>;
 			/* 2.5G网口led灯，如果要闪烁设置为：<0x002b 0x002b 0x0000 0x0000>;
 			 * 该网口灯无法单独控制，只能一起闪，一起灭，一起亮！！！ 
 			*/ 
@@ -861,6 +861,8 @@
 	supports-emmc;
 	non-removable;
 	max-frequency = <200000000>;
+	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8 &emmc_data_strobe &emmc_rstnout>;
+	pinctrl-names = "default";
 	mmc-hs200-1_8v;
 	mmc-hs400-1_8v;
 	mmc-hs400-enhanced-strobe;
@@ -959,6 +961,15 @@
 &uart2 {
 	pinctrl-0 = <&uart2m0_xfer>;
 	status = "okay";
+};
+
+/* uart7m2 (feba0000) muxes to GPIO1_PB4/PB5, which conflicts with
+ * pcie2x1l0 PERST# (pcie2_0_rst = GPIO1_PB4). If uart7 probes, the
+ * pcie2x1l0 host bridge loses the pinctrl request and fails to probe,
+ * taking the first 2.5G NIC down with it. Keep it disabled.
+ */
+&uart7 {
+	status = "disabled";
 };
 
 /* ===== USB ===== */
