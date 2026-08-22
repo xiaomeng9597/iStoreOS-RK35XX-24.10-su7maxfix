@@ -82,6 +82,6 @@ cp -f $GITHUB_WORKSPACE/configfiles/g98_init package/base-files/files/etc/init.d
 chmod 755 package/base-files/files/etc/init.d/g98_init
 
 
-cp -f $GITHUB_WORKSPACE/configfiles/stmmac_main.c.txt stmmac_main.c.txt
-cp -f $GITHUB_WORKSPACE/configfiles/Makefile-dsa.txt target/linux/rockchip/Makefile
+# cp -f $GITHUB_WORKSPACE/configfiles/stmmac_main.c.txt stmmac_main.c.txt
+# cp -f $GITHUB_WORKSPACE/configfiles/Makefile-dsa.txt target/linux/rockchip/Makefile
 ls
